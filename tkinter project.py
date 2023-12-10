@@ -31,12 +31,10 @@ def submit():
 def login():
      username=txtuser.get()  
      password=txtpass.get()
-     with open("users.json","r")as f:
-      data=json.load(f)
-      if username in data:
-          lblmsg.configure(text="welcome", fg="green",font=("Arial",15))
+     if not username or not password:
+          lblmsg.configure(text="wrong user or pass", fg="red",font=("Arial",15))
       else:
-         lblmsg.configure(text="wrong user or pass!", fg="red",font=("Arial",15))
+         lblmsg.configure(text="welcome", fg="green",font=("Arial",15))
                 
      username=txtuser.get()  
      print(username) 
