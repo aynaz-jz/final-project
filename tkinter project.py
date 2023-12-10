@@ -31,15 +31,16 @@ def submit():
 def login():
      username=txtuser.get()  
      password=txtpass.get()
-     if not username or not password:
-          lblmsg.configure(text="wrong user or pass", fg="red",font=("Arial",15))
-      else:
-         lblmsg.configure(text="welcome", fg="green",font=("Arial",15))
-                
-     username=txtuser.get()  
-     print(username) 
-     lbluser.configure(text=username)
-    
+    if not username or not password:
+        lblmsg.configure(text="Please enter both username and password", fg="red")
+        return
+
+        users = load_users()
+    if username in users and users[username] == password:
+         lblmsg.configure(text="Login successful", fg="green")
+    else:
+          lblmsg.configure(text="Incorrect username or password", fg="red")
+
 def delete_account():
     username = txtuser.get()
     if not username:
