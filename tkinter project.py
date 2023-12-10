@@ -17,16 +17,16 @@ def submit():
     password = txtpass.get()
 
     if not username or not password:
-        lblmsg.config(text="Please enter both username and password.", fg="red")
+        lblmsg.configure(text="Please enter both username and password.", fg="red")
         return
 
     users = load_users()
     if username in users:
-        lblmsg.config(text="This username is already submited.", fg="red")
+        lblmsg.configure(text="This username is already submited.", fg="red")
     else:
         users[username] = password
         save_users(users)
-        lblmsg.config(text="submit successful.", fg="green")
+        lblmsg.configure(text="submit successful.", fg="green")
 
 def login():
      username=txtuser.get()  
@@ -45,16 +45,16 @@ def login():
 def delete_account():
     username = txtuser.get()
     if not username:
-        lblmsg.config(text="Please enter the username.", fg="red")
+        lblmsg.configure(text="Please enter the username.", fg="red")
         return
 
     users = load_users()
     if username in users:
         del users[username]
         save_users(users)
-        login.config(text="Account deleted successfully.", fg="green")
+        login.configure(text="Account deleted successfully.", fg="green")
     else:
-        login.config(text="Username not found.", fg="red")
+        login.configure(text="Username not found.", fg="red")
 
 def load_users():
     try:
